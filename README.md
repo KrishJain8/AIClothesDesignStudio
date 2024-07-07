@@ -11,3 +11,6 @@ These are the key technologies used for this technical content review and resear
 - CSS
 - JavaScript
 
+Scenario details
+
+This solution helps users to use AI to explore their imagination and design a shoe of any kind.
