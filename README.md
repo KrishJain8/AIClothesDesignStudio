@@ -7,7 +7,7 @@ Components
 These are the key technologies used for this technical content review and research:
 
 - Azure OpenAI
-- Dall-E 3
+- Dall-E 3 Model
 - HTML
 - CSS
 - JavaScript
