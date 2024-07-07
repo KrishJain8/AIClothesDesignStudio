@@ -25,7 +25,7 @@ This solution helps users to use AI to explore their imagination and design a sh
 - Register for Azure Open AI: https://learn.microsoft.com/en-us/azure/cognitive-services/openai/overview
 - Once approved, create Azure Open AI resource in the Azure portal.
 - Select the region you live in.
-- Once the OpenAi resource is created, go to OpenAI studio.
+- Once the OpenAI resource is created, go to OpenAI studio.
 - Create a Dall-E deployment inside the resource.
 - Select the appropriate Dall-E model to use.
 
