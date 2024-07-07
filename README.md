@@ -20,7 +20,7 @@ Scenario details
 This solution helps users to use AI to explore their imagination and design a shoe of any kind.
 
 
-**1. Azure OpenAI and Dall-E AI Model**
+**Azure OpenAI and Dall-E AI Model**
 
 - Register for Azure Open AI: https://learn.microsoft.com/en-us/azure/cognitive-services/openai/overview
 - Once approved, create Azure OpenAI resource in the Azure portal.
