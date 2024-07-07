@@ -18,3 +18,12 @@ These are the key technologies used for this technical content review and resear
 Scenario details
 
 This solution helps users to use AI to explore their imagination and design a shoe of any kind.
+
+
+**1. Azure Open AI**
+
+Register for Azure Open AI - https://learn.microsoft.com/en-us/azure/cognitive-services/openai/overview
+Once got approved create Azure Open AI resource in Azure portal.
+Select region as East US
+At the time of writing this article davinci-003 is only available in East US
+Create a deployment inside the resource.
