@@ -1,5 +1,6 @@
 # DALLE
 *screenshot of completed parameters entered + designed shoe*
+
 This program allows users to design their own custom shoes, by entering a prompt and selecting various parameters such as the shoe type and brand, and generate the image using Microsoft OpenAI Dall-E.
 
 *insert screenshot of parameter choices for one parameter*
