@@ -1,6 +1,7 @@
 # AI Clothes Design Studio using Azure Open AI and Dalle Model
 
 This program allows users to design their own custom clothing, by entering a prompt and selecting various parameters such as the article of clothing, material, and colors, and generate the image using Microsoft OpenAI Dall-E.
+
 **Summary:**
 This architecture leverages Azure OpenAI's Dall-E model to empower users to design custom clothing through a straightforward web interface. It seamlessly integrates frontend technologies like HTML, CSS, and JavaScript with Azure's powerful AI capabilities, providing a user-friendly and innovative solution for clothing design enthusiasts.
 
