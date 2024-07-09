@@ -31,9 +31,22 @@ This solution helps users to use AI to explore their imagination and design clot
 
 See here for more information about creating an OpenAI Dall-E resource: https://learn.microsoft.com/en-us/azure/ai-services/openai/dall-e-quickstart?tabs=dalle3%2Ccommand-line&pivots=programming-language-studio
 
-**Process Flow**
-- An HTML form captures user-inputted parameters for custom clothing requests.
-- Upon submission, the form transmits these parameters to an Azure OpenAI Dall-E endpoint.
-- The endpoint interprets the input as a prompt for generating an AI-generated image.
-- The JSON response from the endpoint contains the URL of the generated image.
-- This URL is extracted and displayed within an < img > container < div > element on the web page.
+**Process Flow:**
+User Interaction:
+
+User fills out the HTML form with desired parameters (e.g., article of clothing, material, colors).
+User submits the form.
+Backend Process (Azure OpenAI):
+
+JavaScript captures form data and sends a POST request to the Azure OpenAI Dall-E endpoint.
+The Dall-E endpoint interprets the input parameters as a prompt.
+Image Generation:
+
+Dall-E generates a custom image based on the prompt (e.g., design of the specified clothing).
+The generated image URL is included in the JSON response.
+Frontend Display:
+
+JavaScript retrieves the image URL from the JSON response.
+It dynamically updates the <img> tag within the designated <div> on the webpage to display the AI-generated clothing design.
+Summary:
+This architecture leverages Azure OpenAI's Dall-E model to empower users to design custom clothing through a straightforward web interface. It seamlessly integrates frontend technologies like HTML, CSS, and JavaScript with Azure's powerful AI capabilities, providing a user-friendly and innovative solution for clothing design enthusiasts.
