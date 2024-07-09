@@ -36,4 +36,4 @@ See here for more information about creating an OpenAI Dall-E resource: https://
 - Upon submission, the form transmits these parameters to an Azure OpenAI Dall-E endpoint.
 - The endpoint interprets the input as a prompt for generating an AI-generated image.
 - The JSON response from the endpoint contains the URL of the generated image.
-- This URL is extracted and displayed within an '<img>' container '<div>' element on the web page.
+- This URL is extracted and displayed within an < img > container < div > element on the web page.
