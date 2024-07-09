@@ -15,13 +15,6 @@ These are the key technologies used for this technical content review and resear
 - CSS
 - JavaScript
 
-**Process Flow**
-- An HTML form captures user-inputted parameters for custom clothing requests.
-- Upon submission, the form transmits these parameters to an Azure OpenAI Dall-E endpoint.
-- The endpoint interprets the input as a prompt for generating an AI-generated image.
-- The JSON response from the endpoint contains the URL of the generated image.
-- This URL is extracted and displayed within an <img> container **<div>** element on the web page.
-
 Scenario details
 
 This solution helps users to use AI to explore their imagination and design clothing of any kind.
@@ -37,3 +30,10 @@ This solution helps users to use AI to explore their imagination and design clot
 - Select the appropriate Dall-E model to use.
 
 See here for more information about creating an OpenAI Dall-E resource: https://learn.microsoft.com/en-us/azure/ai-services/openai/dall-e-quickstart?tabs=dalle3%2Ccommand-line&pivots=programming-language-studio
+
+**Process Flow**
+- An HTML form captures user-inputted parameters for custom clothing requests.
+- Upon submission, the form transmits these parameters to an Azure OpenAI Dall-E endpoint.
+- The endpoint interprets the input as a prompt for generating an AI-generated image.
+- The JSON response from the endpoint contains the URL of the generated image.
+- This URL is extracted and displayed within an <img> container <div> element on the web page.
