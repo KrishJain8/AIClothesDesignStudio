@@ -1,9 +1,9 @@
 # AI Clothes Design Studio using Azure Open AI and Dalle Model
-*screenshot of completed parameters entered + designed clothing*
 
 This program allows users to design their own custom clothing, by entering a prompt and selecting various parameters such as the article of clothing, material, and colors, and generate the image using Microsoft OpenAI Dall-E.
+**Summary:**
+This architecture leverages Azure OpenAI's Dall-E model to empower users to design custom clothing through a straightforward web interface. It seamlessly integrates frontend technologies like HTML, CSS, and JavaScript with Azure's powerful AI capabilities, providing a user-friendly and innovative solution for clothing design enthusiasts.
 
-*insert screenshot of parameter choices for one parameter*
 
 **Components**
 
@@ -40,17 +40,15 @@ Backend Process (Azure OpenAI):
 
 JavaScript captures form data and sends a POST request to the Azure OpenAI Dall-E endpoint.
 The Dall-E endpoint interprets the input parameters as a prompt.
-Image Generation:
 
+Image Generation:
 Dall-E generates a custom image based on the prompt (e.g., design of the specified clothing).
 The generated image URL is included in the JSON response.
-Frontend Display:
 
-JavaScript retrieves the image URL from the JSON response.
+Frontend Display: JavaScript retrieves the image URL from the JSON response.
 It dynamically updates the <img> tag within the designated <div> on the webpage to display the AI-generated clothing design.
 
-Summary:
-This architecture leverages Azure OpenAI's Dall-E model to empower users to design custom clothing through a straightforward web interface. It seamlessly integrates frontend technologies like HTML, CSS, and JavaScript with Azure's powerful AI capabilities, providing a user-friendly and innovative solution for clothing design enthusiasts.
+
 
 ![image](https://github.com/KrishJain8/DALLE/assets/144550457/b1c11bcc-6987-4276-bfe9-55411aab795d)
 
