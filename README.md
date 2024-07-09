@@ -48,5 +48,9 @@ Frontend Display:
 
 JavaScript retrieves the image URL from the JSON response.
 It dynamically updates the <img> tag within the designated <div> on the webpage to display the AI-generated clothing design.
+
 Summary:
 This architecture leverages Azure OpenAI's Dall-E model to empower users to design custom clothing through a straightforward web interface. It seamlessly integrates frontend technologies like HTML, CSS, and JavaScript with Azure's powerful AI capabilities, providing a user-friendly and innovative solution for clothing design enthusiasts.
+
+![image](https://github.com/KrishJain8/DALLE/assets/144550457/b1c11bcc-6987-4276-bfe9-55411aab795d)
+
