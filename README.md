@@ -1,7 +1,7 @@
 # DALLE
-*screenshot of completed parameters entered + designed shoe*
+*screenshot of completed parameters entered + designed clothing*
 
-This program allows users to design their own custom shoes, by entering a prompt and selecting various parameters such as the shoe type and brand, and generate the image using Microsoft OpenAI Dall-E.
+This program allows users to design their own custom clothing, by entering a prompt and selecting various parameters such as the article of clothing, material, and colors, and generate the image using Microsoft OpenAI Dall-E.
 
 *insert screenshot of parameter choices for one parameter*
 
@@ -15,9 +15,16 @@ These are the key technologies used for this technical content review and resear
 - CSS
 - JavaScript
 
+**Process Flow**
+- An HTML form captures user-inputted parameters for custom clothing requests.
+- Upon submission, the form transmits these parameters to an Azure OpenAI Dall-E endpoint.
+- The endpoint interprets the input as a prompt for generating an AI-generated image.
+- The JSON response from the endpoint contains the URL of the generated image.
+- This URL is extracted and displayed within an <img> container **<div>** element on the web page.
+
 Scenario details
 
-This solution helps users to use AI to explore their imagination and design a shoe of any kind.
+This solution helps users to use AI to explore their imagination and design clothing of any kind.
 
 
 **Azure OpenAI and Dall-E AI Model**
