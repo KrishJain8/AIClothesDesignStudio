@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Clothes Design Studio</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #ffffff; /* Plain white background */
+        color: #333;
+        padding: 20px; /* Add padding to body */
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #4a4a4a;
+    }
+
+    form {
+        width: 60%;
+        margin: auto;
+        background-color: #ffffff; /* Same color as body background */
+        border-radius: 15px; /* Rounded corners */
+        padding: 20px; /* Add padding inside the form */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    td {
+        padding: 12px;
+        border: none; /* Remove border */
+    }
+
+    input[type="text"], textarea, select {
+        width: calc(100% - 24px); /* Adjusted to accommodate padding */
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 16px;
+        border: 1px solid #ddd; /* Light gray border */
+        border-radius: 8px; /* Rounded edges */
+        margin-top: 5px;
+        margin-bottom: 10px;
+        background-color: #f9f9f9; /* Light background */
+        outline: none; /* Remove outline */
+        transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus, textarea:focus, select:focus {
+        border-color: #3498db; /* Blue border on focus */
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        background-color: #000000; /* Black background */
+        color: #fff; /* White text */
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 8px; /* Rounded edges */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border: none; /* Remove default button border */
+        outline: none; /* Remove default button outline */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    }
+
+    button[type="submit"]:hover {
+        background-color: #333333; /* Darker black on hover */
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 16px solid #f3f3f3;
+        border-top: 16px solid #3498db;
+        border-radius: 50%;
+        animation: spin 2s linear infinite;
+        margin: auto;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    #prompt-text {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #4a4a4a;
+        background-color: #ffffff; /* Same color as body background */
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    #image-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    #image-container img {
+        max-width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI Clothes Design Studio</h1>
+        <div class="subheader">This program uses Azure OpenAI Dall-E 3 to generate images of custom designed clothing.</div>
+    </div>
+
+    <form id="image-form">
+        <table>
+            <tr>
+                <td><strong>Article of Clothing:</strong></td>
+                <td>
+                    <select name="clothingArticle">
+                        <option value="">Select article</option>
+                        <option value="Shirt">Shirt</option>
+                        <option value="Pants">Pants</option>
+                        <option value="Dress">Dress</option>
+                        <option value="Jacket">Jacket</option>
+                        <option value="Skirt">Skirt</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Gender:</strong></td>
+                <td>
+                    <select name="gender">
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Unisex">Unisex</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Style:</strong></td>
+                <td>
+                    <select name="style">
+                        <option value="">Select style</option>
+                        <option value="Casual">Casual</option>
+                        <option value="Semiformal">Semiformal</option>
+                        <option value="Formal">Formal</option>
+                        <option value="Athletic">Athletic</option>
+                        <option value="Vintage">Vintage</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Colors/Patterns:</strong></td>
+                <td><input type="text" name="colorsPatterns" placeholder="e.g., Red, Stripes"></td>
+            </tr>
+            <tr>
+                <td><strong>Material/Fabric:</strong></td>
+                <td><input type="text" name="materialFabric" placeholder="e.g., Cotton, Silk"></td>
+            </tr>
+            <tr>
+                <td><strong>Fit:</strong></td>
+                <td>
+                    <select name="fit">
+                        <option value="">Select fit</option>
+                        <option value="Slim">Slim</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Loose">Loose</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea name="prompt" rows="4" placeholder="Enter any specific details for the design..."></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit" onclick="showSpinner()">Generate Image</button>
+                    <div id="spinner" class="spinner" style="display: none;"></div>
+                </td>
+            </tr>
+        </table>
+    </form> 
+    <br><br>
+    <div id="prompt-text"></div>
+    <br>
+    <div id="image-container"></div>
+
+    <script>
+        function showSpinner() {
+            document.getElementById('spinner').style.display = 'block';
+        }
+
+        document.getElementById('image-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var clothingArticle = document.querySelector('select[name="clothingArticle"]').value;
+            var gender = document.querySelector('select[name="gender"]').value;
+            var style = document.querySelector('select[name="style"]').value;
+            var colorsPatterns = document.querySelector('input[name="colorsPatterns"]').value;
+            var materialFabric = document.querySelector('input[name="materialFabric"]').value;
+            var fit = document.querySelector('select[name="fit"]').value;
+            var promptText = document.querySelector('textarea[name="prompt"]').value;
+
+            var finalPrompt = "<strong>" + promptText.charAt(0).toUpperCase() + promptText.slice(1) + "</strong><br><br>" +
+                "<ul>" +
+                "<li><strong>Article of Clothing:</strong> " + clothingArticle.charAt(0).toUpperCase() + clothingArticle.slice(1) + "</li>" +
+                "<li><strong>Gender:</strong> " + gender.charAt(0).toUpperCase() + gender.slice(1) + "</li>" +
+                "<li><strong>Style:</strong> " + style.charAt(0).toUpperCase() + style.slice(1) + "</li>" +
+                "<li><strong>Colors/Patterns:</strong> " + colorsPatterns + "</li>" +
+                "<li><strong>Material/Fabric:</strong> " + materialFabric + "</li>" +
+                "<li><strong>Fit:</strong> " + fit.charAt(0).toUpperCase() + fit.slice(1) + "</li>" +
+                "</ul>";
+
+            var promptContainer = document.getElementById('prompt-text');
+            promptContainer.innerHTML = finalPrompt;
+
+            var prompt = finalPrompt;
+            var url = 'https://xxxx.cognitive.microsoft.com/openai/deployments/Dalle3/images/generations?api-version=2024-02-01';
+            var headers = {
+                "api-key": "xxxxxxxxxxxx",
+                "Content-Type": "application/json"
+            };
+            var body = {
+                "prompt": prompt,
+                "size": "1024x1024",
+                "n": 1,
+                "quality": "hd",
+                "style": "vivid"
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(body)
+            })
+            .then(response => response.json())
+            .then(data => {
+                var imageUrl = data['data'][0]['url'];
+                var imageContainer = document.getElementById('image-container');
+                if (imageUrl.startsWith('Error')) {
+                    imageContainer.innerHTML = '<p>' + imageUrl + '</p>';
+                } else {
+                    imageContainer.innerHTML = '<img src="' + imageUrl + '" alt="Generated Image">';
+                    document.getElementById('spinner').style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
