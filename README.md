@@ -1,4 +1,4 @@
-# AI Clothes Design Studio using Azure Open AI and Dalle Model
+# AI Clothes Design Studio using Azure OpenAI and Dalle Model
 
 This program allows users to design their own custom clothing, by entering a prompt and selecting various parameters such as the article of clothing, material, and colors, and generate the image using Microsoft OpenAI Dall-E.
 
@@ -32,21 +32,18 @@ This solution helps users to use AI to explore their imagination and design clot
 - Get the endpoint and key from the Dall-E resource in the OpenAI Studio under Deployments and use that to be called in the code as shown below. Replace _x_ with the endpoint and key.
 
 ```
-
 var url = 'https://xx.api.cognitive.microsoft.com/openai/deployments/xx/images/generations?api-version=2024-02-01';
 var headers = {
     "api-key": "xxxxxxx",
     "Content-Type": "application/json"
 };
-
 ```
 
 See here for more information about creating an OpenAI Dall-E resource: https://learn.microsoft.com/en-us/azure/ai-services/openai/dall-e-quickstart?tabs=dalle3%2Ccommand-line&pivots=programming-language-studio
 
 **Process Flow:**
 
-User Interaction:
-
+**User Interaction:**
 User fills out the HTML form with desired parameters (e.g., article of clothing, material, colors).
 User submits the form.
 Backend Process (Azure OpenAI):
@@ -54,7 +51,7 @@ Backend Process (Azure OpenAI):
 JavaScript captures form data and sends a POST request to the Azure OpenAI Dall-E endpoint.
 The Dall-E endpoint interprets the input parameters as a prompt _(called in designstudio.js at line 32)_
 
-Image Generation:
+**Image Generation:**
 Dall-E generates a custom image based on the prompt (e.g., design of the specified clothing).
 The generated image URL is included in the JSON response.
 
