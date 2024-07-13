@@ -31,11 +31,15 @@ This solution helps users to use AI to explore their imagination and design clot
 - Select the appropriate Dall-E model to use.
 - Get the endpoint and key from the Dall-E resource in the OpenAI Studio under Deployments and use that to be called in the code as shown below. Replace _x_ with the endpoint and key.
 
+```
+
 var url = 'https://xx.api.cognitive.microsoft.com/openai/deployments/xx/images/generations?api-version=2024-02-01';
 var headers = {
     "api-key": "xxxxxxx",
     "Content-Type": "application/json"
 };
+
+```
 
 See here for more information about creating an OpenAI Dall-E resource: https://learn.microsoft.com/en-us/azure/ai-services/openai/dall-e-quickstart?tabs=dalle3%2Ccommand-line&pivots=programming-language-studio
 
