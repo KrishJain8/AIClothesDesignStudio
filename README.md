@@ -40,7 +40,7 @@ User submits the form.
 Backend Process (Azure OpenAI):
 
 JavaScript captures form data and sends a POST request to the Azure OpenAI Dall-E endpoint.
-The Dall-E endpoint interprets the input parameters as a prompt.
+The Dall-E endpoint interprets the input parameters as a prompt (called in designstudio.js at line #)
 
 Image Generation:
 Dall-E generates a custom image based on the prompt (e.g., design of the specified clothing).
@@ -49,7 +49,4 @@ The generated image URL is included in the JSON response.
 Frontend Display: JavaScript retrieves the image URL from the JSON response.
 It dynamically updates the <img> tag within the designated <div> on the webpage to display the AI-generated clothing design.
 
-
-
-![image](https://github.com/KrishJain8/DALLE/assets/144550457/b1c11bcc-6987-4276-bfe9-55411aab795d)
 
