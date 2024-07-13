@@ -29,9 +29,9 @@
             promptContainer.innerHTML = finalPrompt;
 
             var prompt = finalPrompt;
-            var url = 'https://eastus.api.cognitive.microsoft.com/openai/deployments/Dalle3/images/generations?api-version=2024-02-01';
+            var url = 'https://xx.api.cognitive.microsoft.com/openai/deployments/xx/images/generations?api-version=2024-02-01';
             var headers = {
-                "api-key": "1023e903c1124833aa777cc47afffdd2",
+                "api-key": "xxxxxxx",
                 "Content-Type": "application/json"
             };
             var body = {
