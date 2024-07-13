@@ -34,6 +34,7 @@ This solution helps users to use AI to explore their imagination and design clot
 See here for more information about creating an OpenAI Dall-E resource: https://learn.microsoft.com/en-us/azure/ai-services/openai/dall-e-quickstart?tabs=dalle3%2Ccommand-line&pivots=programming-language-studio
 
 **Process Flow:**
+
 User Interaction:
 
 User fills out the HTML form with desired parameters (e.g., article of clothing, material, colors).
