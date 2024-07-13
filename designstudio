@@ -13,28 +13,35 @@
 
     body {
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        background-color: #ffffff; /* Plain white background */
+        background-color: #f5f5f5; /* Light gray background */
         color: #333;
-        padding: 20px; /* Add padding to body */
+        padding: 40px; /* Increased padding for better layout */
     }
 
     .header {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px; /* More spacing for better visual separation */
     }
 
     .header h1 {
-        font-size: 24px;
+        font-size: 36px; /* Larger font size for prominence */
         margin-bottom: 10px;
-        color: #4a4a4a;
+        color: #2c3e50; /* Darker color for the header */
+    }
+
+    .subheader {
+        font-size: 18px;
+        color: #7f8c8d; /* Subtle color for the subheader */
     }
 
     form {
-        width: 60%;
+        width: 100%;
+        max-width: 700px; /* Limit form width for better readability */
         margin: auto;
-        background-color: #ffffff; /* Same color as body background */
+        background-color: #ffffff; /* White background for the form */
         border-radius: 15px; /* Rounded corners */
-        padding: 20px; /* Add padding inside the form */
+        padding: 30px; /* More padding inside the form */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     }
 
     table {
@@ -43,13 +50,13 @@
     }
 
     td {
-        padding: 12px;
+        padding: 12px 0; /* Vertical padding only */
         border: none; /* Remove border */
     }
 
     input[type="text"], textarea, select {
-        width: calc(100% - 24px); /* Adjusted to accommodate padding */
-        padding: 10px;
+        width: 100%; /* Full width inputs */
+        padding: 12px;
         box-sizing: border-box;
         font-size: 16px;
         border: 1px solid #ddd; /* Light gray border */
@@ -67,9 +74,9 @@
 
     button[type="submit"] {
         width: 100%;
-        background-color: #000000; /* Black background */
+        background-color: #3498db; /* Blue background */
         color: #fff; /* White text */
-        padding: 12px 20px;
+        padding: 15px; /* More padding */
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -83,17 +90,17 @@
     }
 
     button[type="submit"]:hover {
-        background-color: #333333; /* Darker black on hover */
+        background-color: #2980b9; /* Darker blue on hover */
     }
 
     .spinner {
         width: 50px;
         height: 50px;
-        border: 16px solid #f3f3f3;
-        border-top: 16px solid #3498db;
+        border: 8px solid #f3f3f3; /* Thinner spinner */
+        border-top: 8px solid #3498db; /* Blue spinner top */
         border-radius: 50%;
         animation: spin 2s linear infinite;
-        margin: auto;
+        margin: 20px auto; /* Centered and with margin */
     }
 
     @keyframes spin {
@@ -105,10 +112,11 @@
         text-align: center;
         margin-top: 20px;
         font-size: 18px;
-        color: #4a4a4a;
-        background-color: #ffffff; /* Same color as body background */
+        color: #2c3e50; /* Darker text */
+        background-color: #ffffff; /* White background */
         padding: 20px;
         border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
     }
 
     #image-container {
@@ -119,7 +127,7 @@
     #image-container img {
         max-width: 100%;
         border-radius: 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for images */
     }
 </style>
 </head>
@@ -164,7 +172,7 @@
                         <option value="Semiformal">Semiformal</option>
                         <option value="Formal">Formal</option>
                         <option value="Athletic">Athletic</option>
-                        <option value="Vintage">Vintage</option>
+                        <option value="Comfortable">Comfortable</option>
                     </select>
                 </td>
             </tr>
@@ -222,22 +230,23 @@
             var promptText = document.querySelector('textarea[name="prompt"]').value;
 
             var finalPrompt = "<strong>" + promptText.charAt(0).toUpperCase() + promptText.slice(1) + "</strong><br><br>" +
-                "<ul>" +
-                "<li><strong>Article of Clothing:</strong> " + clothingArticle.charAt(0).toUpperCase() + clothingArticle.slice(1) + "</li>" +
-                "<li><strong>Gender:</strong> " + gender.charAt(0).toUpperCase() + gender.slice(1) + "</li>" +
-                "<li><strong>Style:</strong> " + style.charAt(0).toUpperCase() + style.slice(1) + "</li>" +
-                "<li><strong>Colors/Patterns:</strong> " + colorsPatterns + "</li>" +
-                "<li><strong>Material/Fabric:</strong> " + materialFabric + "</li>" +
-                "<li><strong>Fit:</strong> " + fit.charAt(0).toUpperCase() + fit.slice(1) + "</li>" +
-                "</ul>";
+                "<strong>Article of Clothing:</strong> " + clothingArticle.charAt(0).toUpperCase() + clothingArticle.slice(1) + "<br>" +
+                "<strong>Gender:</strong> " + gender.charAt(0).toUpperCase() + gender.slice(1) + "<br>" +
+                "<strong>Style:</strong> " + style.charAt(0).toUpperCase() + style.slice(1) + "<br>" +
+                "<strong>Colors/Patterns:</strong> " + colorsPatterns + "<br>" +
+                "<strong>Material/Fabric:</strong> " + materialFabric + "<br>" +
+                "<strong>Fit:</strong> " + fit.charAt(0).toUpperCase() + fit.slice(1);
+
+
+
 
             var promptContainer = document.getElementById('prompt-text');
             promptContainer.innerHTML = finalPrompt;
 
             var prompt = finalPrompt;
-            var url = 'https://xxxx.cognitive.microsoft.com/openai/deployments/Dalle3/images/generations?api-version=2024-02-01';
+            var url = 'https://eastus.api.cognitive.microsoft.com/openai/deployments/Dalle3/images/generations?api-version=2024-02-01';
             var headers = {
-                "api-key": "xxxxxxxxxxxx",
+                "api-key": "1023e903c1124833aa777cc47afffdd2",
                 "Content-Type": "application/json"
             };
             var body = {
@@ -261,6 +270,7 @@
                     imageContainer.innerHTML = '<p>' + imageUrl + '</p>';
                 } else {
                     imageContainer.innerHTML = '<img src="' + imageUrl + '" alt="Generated Image">';
+                    imageContainer.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' }); // Scroll to the image container
                     document.getElementById('spinner').style.display = 'none';
                 }
             });
