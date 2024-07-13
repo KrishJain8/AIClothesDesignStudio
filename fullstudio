@@ -1,126 +1,155 @@
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Clothes Design Studio</title>
+</head>
+<link rel="stylesheet" href="designstudio.css">
+<body>
+    <div class="header">
+        <h1>AI Clothes Design Studio</h1>
+        <div class="subheader">This program uses Azure OpenAI Dall-E 3 to generate images of custom designed clothing.</div>
+    </div>
 
-    body {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        background-color: #f5f5f5; /* Light gray background */
-        color: #333;
-        padding: 40px; /* Increased padding for better layout */
-    }
+    <form id="image-form">
+        <table>
+            <tr>
+                <td><strong>Article of Clothing:</strong></td>
+                <td>
+                    <select name="clothingArticle">
+                        <option value="">Select article</option>
+                        <option value="Shirt">Shirt</option>
+                        <option value="Pants">Pants</option>
+                        <option value="Dress">Dress</option>
+                        <option value="Jacket">Jacket</option>
+                        <option value="Skirt">Skirt</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Gender:</strong></td>
+                <td>
+                    <select name="gender">
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Unisex">Unisex</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Style:</strong></td>
+                <td>
+                    <select name="style">
+                        <option value="">Select style</option>
+                        <option value="Casual">Casual</option>
+                        <option value="Semiformal">Semiformal</option>
+                        <option value="Formal">Formal</option>
+                        <option value="Athletic">Athletic</option>
+                        <option value="Comfortable">Comfortable</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Colors/Patterns:</strong></td>
+                <td><input type="text" name="colorsPatterns" placeholder="e.g., Red, Stripes"></td>
+            </tr>
+            <tr>
+                <td><strong>Material/Fabric:</strong></td>
+                <td><input type="text" name="materialFabric" placeholder="e.g., Cotton, Silk"></td>
+            </tr>
+            <tr>
+                <td><strong>Fit:</strong></td>
+                <td>
+                    <select name="fit">
+                        <option value="">Select fit</option>
+                        <option value="Slim">Slim</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Loose">Loose</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea name="prompt" rows="4" placeholder="Enter any specific details for the design..."></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit" onclick="showSpinner()">Generate Image</button>
+                    <div id="spinner" class="spinner" style="display: none;"></div>
+                </td>
+            </tr>
+        </table>
+    </form> 
+    <br><br>
+    <div id="prompt-text"></div>
+    <br>
+    <div id="image-container"></div>
 
-    .header {
-        text-align: center;
-        margin-bottom: 30px; /* More spacing for better visual separation */
-    }
+    <script>
+        function showSpinner() {
+            document.getElementById('spinner').style.display = 'block';
+        }
 
-    .header h1 {
-        font-size: 36px; /* Larger font size for prominence */
-        margin-bottom: 10px;
-        color: #2c3e50; /* Darker color for the header */
-    }
+        document.getElementById('image-form').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-    .subheader {
-        font-size: 18px;
-        color: #7f8c8d; /* Subtle color for the subheader */
-    }
+            var clothingArticle = document.querySelector('select[name="clothingArticle"]').value;
+            var gender = document.querySelector('select[name="gender"]').value;
+            var style = document.querySelector('select[name="style"]').value;
+            var colorsPatterns = document.querySelector('input[name="colorsPatterns"]').value;
+            var materialFabric = document.querySelector('input[name="materialFabric"]').value;
+            var fit = document.querySelector('select[name="fit"]').value;
+            var promptText = document.querySelector('textarea[name="prompt"]').value;
 
-    form {
-        width: 100%;
-        max-width: 700px; /* Limit form width for better readability */
-        margin: auto;
-        background-color: #ffffff; /* White background for the form */
-        border-radius: 15px; /* Rounded corners */
-        padding: 30px; /* More padding inside the form */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    }
+            var finalPrompt = "<strong>" + promptText.charAt(0).toUpperCase() + promptText.slice(1) + "</strong><br><br>" +
+                "<strong>Article of Clothing:</strong> " + clothingArticle.charAt(0).toUpperCase() + clothingArticle.slice(1) + "<br>" +
+                "<strong>Gender:</strong> " + gender.charAt(0).toUpperCase() + gender.slice(1) + "<br>" +
+                "<strong>Style:</strong> " + style.charAt(0).toUpperCase() + style.slice(1) + "<br>" +
+                "<strong>Colors/Patterns:</strong> " + colorsPatterns + "<br>" +
+                "<strong>Material/Fabric:</strong> " + materialFabric + "<br>" +
+                "<strong>Fit:</strong> " + fit.charAt(0).toUpperCase() + fit.slice(1);
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
 
-    td {
-        padding: 12px 0; /* Vertical padding only */
-        border: none; /* Remove border */
-    }
 
-    input[type="text"], textarea, select {
-        width: 100%; /* Full width inputs */
-        padding: 12px;
-        box-sizing: border-box;
-        font-size: 16px;
-        border: 1px solid #ddd; /* Light gray border */
-        border-radius: 8px; /* Rounded edges */
-        margin-top: 5px;
-        margin-bottom: 10px;
-        background-color: #f9f9f9; /* Light background */
-        outline: none; /* Remove outline */
-        transition: border-color 0.3s;
-    }
 
-    input[type="text"]:focus, textarea:focus, select:focus {
-        border-color: #3498db; /* Blue border on focus */
-    }
+            var promptContainer = document.getElementById('prompt-text');
+            promptContainer.innerHTML = finalPrompt;
 
-    button[type="submit"] {
-        width: 100%;
-        background-color: #3498db; /* Blue background */
-        color: #fff; /* White text */
-        padding: 15px; /* More padding */
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        border-radius: 8px; /* Rounded edges */
-        cursor: pointer;
-        transition: background-color 0.3s;
-        border: none; /* Remove default button border */
-        outline: none; /* Remove default button outline */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
-    }
+            var prompt = finalPrompt;
+            var url = 'https://eastus.api.cognitive.microsoft.com/openai/deployments/Dalle3/images/generations?api-version=2024-02-01';
+            var headers = {
+                "api-key": "1023e903c1124833aa777cc47afffdd2",
+                "Content-Type": "application/json"
+            };
+            var body = {
+                "prompt": prompt,
+                "size": "1024x1024",
+                "n": 1,
+                "quality": "hd",
+                "style": "vivid"
+            };
 
-    button[type="submit"]:hover {
-        background-color: #2980b9; /* Darker blue on hover */
-    }
-
-    .spinner {
-        width: 50px;
-        height: 50px;
-        border: 8px solid #f3f3f3; /* Thinner spinner */
-        border-top: 8px solid #3498db; /* Blue spinner top */
-        border-radius: 50%;
-        animation: spin 2s linear infinite;
-        margin: 20px auto; /* Centered and with margin */
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    #prompt-text {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 18px;
-        color: #2c3e50; /* Darker text */
-        background-color: #ffffff; /* White background */
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
-    }
-
-    #image-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    #image-container img {
-        max-width: 100%;
-        border-radius: 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for images */
-    }
-</style>
+            fetch(url, {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(body)
+            })
+            .then(response => response.json())
+            .then(data => {
+                var imageUrl = data['data'][0]['url'];
+                var imageContainer = document.getElementById('image-container');
+                if (imageUrl.startsWith('Error')) {
+                    imageContainer.innerHTML = '<p>' + imageUrl + '</p>';
+                } else {
+                    imageContainer.innerHTML = '<img src="' + imageUrl + '" alt="Generated Image">';
+                    imageContainer.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' }); // Scroll to the image container
+                    document.getElementById('spinner').style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
