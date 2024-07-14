@@ -42,8 +42,9 @@ See here for more information about creating an OpenAI Dall-E resource: https://
 **User Interaction:**
 User fills out the HTML form with desired parameters (e.g., article of clothing, material, colors).
 User submits the form.
-Backend Process (Azure OpenAI):
 
+**Backend Process (Azure OpenAI):
+**
 JavaScript captures form data and sends a POST request to the Azure OpenAI Dall-E endpoint.
 The Dall-E endpoint interprets the input parameters as a prompt.
 
