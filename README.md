@@ -16,10 +16,6 @@ These are the key technologies used for this technical content review and resear
 - CSS
 - JavaScript
 
-Scenario details
-
-This solution helps users to use AI to explore their imagination and design clothing of any kind.
-
 
 **Azure OpenAI and Dall-E AI Model**
 
