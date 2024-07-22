@@ -7,8 +7,8 @@ This architecture leverages Azure OpenAI's Dall-E model to empower users to desi
 **Sample Prompt Text** Design a vibrant futuristic streetwear jacket inspired by the neon lights of Tokyo at night. Incorporating abstract geometric patterns and a mix of synthetci fabric that gives a subtle glow
 
 ![image](https://github.com/user-attachments/assets/54da9357-32ae-4e9b-9879-86a9574d829b)
-**Demo Video** https://github.com/KrishJain8/AIClothesDesignStudio/raw/main/AIClothesDesignDemoVide.mp4
 
+**Demo Video** https://github.com/KrishJain8/AIClothesDesignStudio/raw/main/AIClothesDesignDemoVide.mp4
 
 **Components**
 
