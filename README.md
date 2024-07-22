@@ -4,11 +4,8 @@ This program allows users to design their own custom clothing, by entering a pro
 
 **Summary:**
 This architecture leverages Azure OpenAI's Dall-E model to empower users to design custom clothing through a straightforward web interface. It seamlessly integrates frontend technologies like HTML, CSS, and JavaScript with Azure's powerful AI capabilities, providing a user-friendly and innovative solution for clothing design enthusiasts.
-![image](https://github.com/user-attachments/assets/30756b6b-0ab9-43ea-afdb-2a87153d0a11)![image](https://github.com/user-attachments/assets/df6a1266-2ad2-4798-be2b-f1c8aacce315)
 
 ![image](https://github.com/user-attachments/assets/54da9357-32ae-4e9b-9879-86a9574d829b)
-
-
 **Demo Video** https://github.com/KrishJain8/AIClothesDesignStudio/raw/main/AIClothesDesignDemoVide.mp4
 
 
