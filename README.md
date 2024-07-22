@@ -15,11 +15,10 @@ This architecture leverages Azure OpenAI's Dall-E model to empower users to desi
 These are the key technologies used for this technical content review and research:
 
 - Azure OpenAI
-- Dall-E 3 AI Model
+- Dall-E3 Azure OpenAI Model
 - HTML
 - CSS
 - JavaScript
-
 
 **Azure OpenAI and Dall-E AI Model**
 
