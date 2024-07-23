@@ -56,6 +56,6 @@ Dall-E generates a custom image based on the prompt (e.g., design of the specifi
 The generated image URL is included in the JSON response.
 
 **Frontend Display:** 
-JavaScript retrieves the image URL from the JSON response. It dynamically updates the <img> tag within the designated <div> on the webpage to display the AI-generated clothing design.
+JavaScript retrieves the image URL from the JSON response. It dynamically updates the <img> tag within the designated on the webpage to display the AI-generated clothing design.
 
 
